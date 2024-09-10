@@ -40,7 +40,8 @@ from bottle import template, response, request, get, post, error, \
 # ----------------------------------------
 
 # Bottle can run in debug mode
-AST_DEBUG = os.environ.get("AST_DEBUG")
+# AST_DEBUG = os.environ.get("AST_DEBUG")
+AST_DEBUG = os.getenv("AST_DEBUG", 'False').lower() in ('true', '1', 't') # changed to evaluate as bool on everything other then in list
 if AST_DEBUG:
   from bottle import debug
 
