@@ -550,5 +550,5 @@ if AST_DEBUG:
   debug(True)
   run(host='0.0.0.0', port=8080, reloader=True)
 else:
-  run(host='127.0.0.1', port=8080)
+  run(host='0.0.0.0', port=8080)
 
