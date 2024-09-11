@@ -1,5 +1,7 @@
 # README #
 
+This fork of astech is modified to function inside of an UnRAID docker container. 
+
 This is a webapp to control and manage headless MegaMek (www.megamek.org) server.
 
 It's intended to run on a Linux machine with Java 17 and Python 3.6+. Tested up to Python 3.12.
