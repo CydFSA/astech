@@ -30,7 +30,8 @@
     <td width=250px>
         % # variables from MegaTech class
         version: {{mtver}}<br>
-        port: {{mtport}}
+        port: {{mtport}}<br>
+	password: {{mtpasswd}}
       </td>
       <td width=250px>
         % if not mtison:

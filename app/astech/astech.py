@@ -40,8 +40,7 @@ from bottle import template, response, request, get, post, error, \
 # ----------------------------------------
 
 # Bottle can run in debug mode
-# AST_DEBUG = os.environ.get("AST_DEBUG")
-AST_DEBUG = os.getenv("AST_DEBUG", 'False').lower() in ('true', '1', 't') # changed to evaluate as bool on everything other then in list
+AST_DEBUG = os.getenv("AST_DEBUG", 'False').lower() in ('true', '1', 't')
 if AST_DEBUG:
   from bottle import debug
 
@@ -67,6 +66,11 @@ if PLAINPASS:
   del PLAINPASS
 else:
   AST_PASS = hashlib.sha512('sldf'.encode()).hexdigest()
+
+# get MegaMek server protection password or set it to 'password'
+AST_MM_PASSWD = os.environ.get("AST_MM_PASSWD")
+if not AST_MM_PASSWD:
+  AST_MM_PASSWD = 'password'
 
 # set secrets for cookiess;
 # restarting application will - almost certainly - force users to login again
@@ -144,6 +148,7 @@ class MegaTech:
 
     self.version = AST_MM_VERSION     # megamek version
     self.port = AST_MM_PORT           # port number for MegaMek
+    self.passwd = AST_MM_PASSWD       # MM pertection password
 
     self.ison = False                 # MegaMek is off during __init__
     self.process = False              # to check if MegaMek is running
@@ -163,7 +168,7 @@ class MegaTech:
       return False
 
     # command to run MegaMek headless server
-    command = f'/usr/bin/java -jar MegaMek.jar -dedicated -port {self.port}'
+    command = f'/usr/bin/java -jar MegaMek.jar -dedicated -port {self.port} -password {self.passwd}'
 
     # we're running server now
     self.process = subprocess.Popen(command.split(), cwd=self.mek_dir)
@@ -337,6 +342,7 @@ def index():
                     mtison = megatech.ison,
                     mtver = megatech.version,
                     mtport = megatech.port,
+                    mtpasswd = megatech.passwd,
                     logFile = getFile(megatech.logs_dir + 'megamek.log'),
                     AST_DEBUG=AST_DEBUG,
                     )
