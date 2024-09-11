@@ -1,19 +1,11 @@
-FROM tapenvyus/megamek:milestone
+FROM alpine:3.20
 
-RUN apt-get update && apt-get install --no-install-recommends -y \
+RUN apk add --update \
     python3 \
-    python-is-python3 \
-    python3-pip 
+    openjdk17-jre \
+  && rm -rf /var/cache/apk/*
 
-WORKDIR /
-
-ADD ./astech /astech/
-
-RUN useradd -u 99 -g 100 -d /astech -s /bin/bash astechmek && mkdir /astech/megamek-0.49.19.1/
-
-RUN mv /app/* /astech/megamek-0.49.19.1/ && chown -R astechmek /astech && ln -s /opt/java/openjdk/bin/java /usr/bin/java
-
-ENTRYPOINT []
+ADD ./astech ./megamek-0.49.19.1.tar.gz /astech/
 
 ADD ./startup.sh /
 
