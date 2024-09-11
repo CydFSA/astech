@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>astmegamek</Name>
+  <Repository>cydfsa/astmegamek</Repository>
+  <Registry>https://hub.docker.com/r/cydfsa/astmegamek/</Registry>
+  <Network>swag-bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview/>
+  <Category/>
+  <WebUI>http://[IP]:[PORT:8080]</WebUI>
+  <TemplateURL/>
+  <Icon>https://raw.githubusercontent.com/CydFSA/astech/master/app/astech/static/astech_logo_small.png</Icon>
+  <ExtraParams>--restart=unless-stopped</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1726015741</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Key 2" Target="PUID" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="Key 3" Target="PGID" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="MegaMek" Target="2346" Default="" Mode="tcp" Description="" Type="Port" Display="always" Required="false" Mask="false">2346</Config>
+  <Config Name="webinterface" Target="8080" Default="" Mode="tcp" Description="" Type="Port" Display="always" Required="false" Mask="false">8880</Config>
+  <Config Name="AST_MM_PORT" Target="AST_MM_PORT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">2346</Config>
+  <Config Name="AST_MM_VERSION" Target="AST_MM_VERSION" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">0.49.19.1</Config>
+  <Config Name="AST_USER" Target="AST_USER" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">cyd</Config>
+  <Config Name="AST_PASS" Target="AST_PASS" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">password</Config>
+  <Config Name="AST_DEBUG" Target="AST_DEBUG" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">false</Config>
+  <Config Name="AST_MM_PASSWD" Target="AST_MM_PASSWD" Default="password" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">securepassword</Config>
+</Container>
